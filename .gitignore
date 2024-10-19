@@ -31,8 +31,20 @@ tags
 ### Undo Persistence ###
 [._]*.un~
 
+## Eclipse ##
+.classpath
+.project
+.settings/
+
 # Logs #
 *.log*
 
 # Environment #
 .envrc
+
+# Artifacts #
+## Gradle ##
+.gradle/
+bin/
+build/
+run/
