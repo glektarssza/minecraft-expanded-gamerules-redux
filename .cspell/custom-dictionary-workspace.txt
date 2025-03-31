@@ -1,2 +1,11 @@
 # Custom Dictionary Words
+autobuild
+dsun
 gamerules
+javax
+minecraftforge
+mojang
+spongepowered
+temurin
+vmargs
+xlog
