@@ -1,11 +1,18 @@
 # Custom Dictionary Words
 autobuild
+delcaration
 dsun
+explicitconstructorcall
 gamerules
+imple
 javax
 minecraftforge
 mojang
+multicatch
 spongepowered
+statment
+superinterfaces
+switchstatements
 temurin
 vmargs
 xlog
