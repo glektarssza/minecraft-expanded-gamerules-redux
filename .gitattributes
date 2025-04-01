@@ -12,3 +12,9 @@
 
 # Process .jar files with Git LFS
 *.jar filter=lfs diff=lfs merge=lfs -text
+
+# Treat .png files as binary
+*.png binary
+
+# Process .png files with Git LFS
+*.png filter=lfs diff=lfs merge=lfs -text
