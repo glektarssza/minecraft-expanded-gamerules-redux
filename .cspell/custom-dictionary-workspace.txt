@@ -11,6 +11,8 @@ gamerules
 imple
 javax
 legacyforge
+mcmeta
+millis
 minecraftforge
 moddev
 mojang
@@ -20,8 +22,10 @@ neoforged
 refmap
 spongepowered
 statment
+subprojects
 superinterfaces
 switchstatements
 temurin
+tweaker
 vmargs
 xlog
