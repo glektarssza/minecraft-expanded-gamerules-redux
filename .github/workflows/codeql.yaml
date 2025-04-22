@@ -12,6 +12,7 @@ jobs:
     name: CodeQL Analyze
     runs-on: ubuntu-latest
     permissions:
+      #-- Read repository contents
       contents: read
       security-events: write
     steps:
