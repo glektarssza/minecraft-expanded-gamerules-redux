@@ -1,14 +1,22 @@
 # Custom Dictionary Words
+accesstransformer
 autobuild
 delcaration
 dsun
 explicitconstructorcall
+findbugs
+foojay
 gamerules
 imple
 javax
+legacyforge
 minecraftforge
+moddev
 mojang
 multicatch
+multiloader
+neoforged
+refmap
 spongepowered
 statment
 superinterfaces
