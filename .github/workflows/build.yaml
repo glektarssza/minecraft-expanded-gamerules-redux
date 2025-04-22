@@ -56,7 +56,7 @@ jobs:
         run: ${{github.workspace}}/gradlew build $([[ "${{inputs.override_mod_version}}" == "true" ]] && echo "-Pmod_version=${{inputs.mod_version_override}}")
       - id: upload-common-build-artifacts
         name: Upload common build artifacts
-        if: github.ref != 'refs/heads/main'
+        if: startsWith(github.ref, 'refs/heads/mc-')
         uses: actions/upload-artifact@v4
         with:
           name: dist-common
