@@ -1,5 +1,6 @@
 # Custom Dictionary Words
 accesstransformer
+accesswidener
 autobuild
 delcaration
 dsun
