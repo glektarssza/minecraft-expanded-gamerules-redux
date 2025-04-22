@@ -8,6 +8,7 @@ explicitconstructorcall
 findbugs
 foojay
 gamerules
+gradlew
 imple
 javax
 legacyforge
@@ -18,7 +19,9 @@ moddev
 mojang
 multicatch
 multiloader
+neoforge
 neoforged
+pmod
 refmap
 spongepowered
 statment
