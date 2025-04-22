@@ -14,6 +14,7 @@ jobs:
     permissions:
       #-- Read repository contents
       contents: read
+      #-- Write security events
       security-events: write
     steps:
       - id: checkout-repository
