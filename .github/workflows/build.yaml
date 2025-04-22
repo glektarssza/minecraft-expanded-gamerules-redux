@@ -65,7 +65,7 @@ jobs:
           if-no-files-found: error
       - id: upload-forge-build-artifacts
         name: Upload Forge build artifacts
-        if: github.ref != 'refs/heads/main'
+        if: startsWith(github.ref, 'refs/heads/mc-')
         uses: actions/upload-artifact@v4
         with:
           name: dist-forge
@@ -74,7 +74,7 @@ jobs:
           if-no-files-found: error
       - id: upload-fabric-build-artifacts
         name: Upload Fabric build artifacts
-        if: github.ref != 'refs/heads/main'
+        if: startsWith(github.ref, 'refs/heads/mc-')
         uses: actions/upload-artifact@v4
         with:
           name: dist-fabric
@@ -83,7 +83,7 @@ jobs:
           if-no-files-found: warn
       - id: upload-neoforge-build-artifacts
         name: Upload NeoForge build artifacts
-        if: github.ref != 'refs/heads/main'
+        if: startsWith(github.ref, 'refs/heads/mc-')
         uses: actions/upload-artifact@v4
         with:
           name: dist-neoforge
