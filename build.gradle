@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.6-SNAPSHOT' apply(false)
+    id 'fabric-loom' version '1.10-SNAPSHOT' apply(false)
     id 'net.minecraftforge.gradle' version '[6.0,6.2)' apply(false)
     id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT' apply(false)
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' apply(false)
@@ -68,6 +68,7 @@ subprojects {
             'mod_description'           : mod_description,
             'mod_credits'               : mod_credits,
             'mod_url'                   : mod_url,
+            'mod_source_url'            : mod_source_url,
             'mod_update_url'            : mod_update_url,
             'java_version'              : java_version,
             'mod_issue_tracker_url'     : mod_issue_tracker_url,
@@ -79,7 +80,18 @@ subprojects {
             'fabric_loader_version'     : fabric_loader_version
         ]
         var jsonExpandProps = expandProps.collectEntries {
-            key, value -> [(key): value instanceof String ? value.replace("\n", "\\\\n") : value]
+            if (it.value instanceof String) {
+                def value = it.value.replace("\\n", "\\\\n")
+                if (value.startsWith("\"")) {
+                    value = value.substring(1)
+                }
+                if (value.endsWith("\"")) {
+                    value = value.substring(0, value.length() - 1)
+                }
+                [(it.key): value]
+            } else {
+                [(it.key): it.value]
+            }
         }
         filesMatching(['META-INF/mods.toml']) {
             expand expandProps

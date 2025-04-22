@@ -23,5 +23,4 @@ plugins {
 rootProject.name = 'minecraft-expanded-gamerules-redux'
 include("common")
 include("forge")
-// TODO
-// include("fabric")
+include("fabric")
