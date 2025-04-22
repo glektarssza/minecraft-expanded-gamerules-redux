@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Build
+on:
+  workflow_call:
+    secrets:
+      github-token:
+        description: |
+          The token to use to make calls to the GitHub APIs.
+        required: false
+    inputs:
+      override_mod_version:
+        type: boolean
+        description: |
+          Whether to override the mod version for this build.
+        default: false
+        required: false
+      mod_version_override:
+        type: string
+        description: |
+          The version number to override the mod version with for this build.
+
+          Only used if the `override_mod_version` flag is set.
+        default: ""
+        required: false
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - id: checkout-repository
+        name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          token: ${{secrets.github-token || secrets.GITHUB_TOKEN}}
+      - id: setup-java
+        name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version-file: ${{github.workspace}}/.java-version
+          token: ${{secrets.github-token || secrets.GITHUB_TOKEN}}
+      - id: setup-gradle
+        name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: wrapper
+          github-token: ${{secrets.github-token || secrets.GITHUB_TOKEN}}
+      - id: build
+        name: Build
+        run: ${{github.workspace}}/gradlew build $([[ "${{inputs.override_mod_version}}" == "true" ]] && echo "-Pmod_version=${{inputs.mod_version_override}}")
+      - id: upload-common-build-artifacts
+        name: Upload common build artifacts
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-common
+          path: ${{github.workspace}}/common/build/libs
+          compression-level: 0
+          if-no-files-found: error
+      - id: upload-forge-build-artifacts
+        name: Upload Forge build artifacts
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-forge
+          path: ${{github.workspace}}/forge/build/libs
+          compression-level: 0
+          if-no-files-found: error
+      - id: upload-fabric-build-artifacts
+        name: Upload Fabric build artifacts
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-fabric
+          path: ${{github.workspace}}/fabric/build/libs
+          compression-level: 0
+          if-no-files-found: warn
+      - id: upload-neoforge-build-artifacts
+        name: Upload NeoForge build artifacts
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-neoforge
+          path: ${{github.workspace}}/neoforge/build/libs
+          compression-level: 0
+          if-no-files-found: warn
