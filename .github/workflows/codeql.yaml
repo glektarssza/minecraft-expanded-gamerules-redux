@@ -2,9 +2,13 @@
 name: CodeQL
 on:
   push:
+    branches:
+      - mc-*/*
+      - mc-*/**/*
   pull_request:
     branches:
-      - mc-*/main
+      - mc-*/*
+      - mc-*/**
 jobs:
   codeql-analyze:
     name: CodeQL Analyze
