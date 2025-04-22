@@ -53,7 +53,13 @@ jobs:
           github-token: ${{secrets.github-token || secrets.GITHUB_TOKEN}}
       - id: build
         name: Build
-        run: ${{github.workspace}}/gradlew build $([[ "${{inputs.override_mod_version}}" == "true" ]] && echo "-Pmod_version=${{inputs.mod_version_override}}")
+        env:
+          ORG_GRADLE_PROJECT_mod_version: ${{inputs.mod_version_override}}
+        run: |
+          if [[ "${{inputs.mod_version_override}}" == "" ]]; then
+            unset ORG_GRADLE_PROJECT_mod_version
+          fi
+          ${{github.workspace}}/gradlew build
       - id: upload-common-build-artifacts
         name: Upload common build artifacts
         if: startsWith(github.ref, 'refs/heads/mc-')
