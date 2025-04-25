@@ -41,6 +41,7 @@ tags
 ## General ##
 .project
 .classpath
+.factorypath
 .settings/
 
 # Logs #
