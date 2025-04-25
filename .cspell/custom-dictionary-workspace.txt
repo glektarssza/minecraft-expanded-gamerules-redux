@@ -5,6 +5,7 @@ autobuild
 delcaration
 dsun
 explicitconstructorcall
+factorypath
 findbugs
 foojay
 gamerules
