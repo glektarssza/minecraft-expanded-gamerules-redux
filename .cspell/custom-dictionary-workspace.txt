@@ -26,6 +26,7 @@ neoforge
 neoforged
 pmod
 refmap
+reobf
 spongepowered
 statment
 subprojects
