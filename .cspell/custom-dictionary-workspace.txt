@@ -5,10 +5,12 @@ autobuild
 delcaration
 dsun
 explicitconstructorcall
+fabricmc
 factorypath
 findbugs
 foojay
 gamerules
+getenv
 gradlew
 imple
 javax
