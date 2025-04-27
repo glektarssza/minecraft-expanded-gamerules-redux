@@ -4,9 +4,44 @@ plugins {
     id 'maven-publish'
     id 'org.spongepowered.gradle.vanilla'
 }
+
 base {
     archivesName = "${archive_base_name}-${project.name}-v${mod_version}-mc-${minecraft_version}"
 }
+
+task generateJava(type: Copy) {
+    from 'src/template/java'
+    into "${buildDir}/generated/java"
+    expand([
+        'mod_version'               : mod_version,
+        'mod_group'                 : mod_group,
+        'mod_name'                  : mod_name,
+        'mod_author'                : mod_author,
+        'mod_id'                    : mod_id,
+        'mod_license'               : mod_license,
+        'mod_description'           : mod_description,
+        'mod_credits'               : mod_credits,
+        'mod_url'                   : mod_url,
+        'mod_source_url'            : mod_source_url,
+        'mod_update_url'            : mod_update_url,
+        'java_version'              : java_version,
+        'mod_issue_tracker_url'     : mod_issue_tracker_url,
+        'minecraft_version'         : minecraft_version,
+        'minecraft_version_range'   : minecraft_version_range,
+        'forge_version'             : forge_version,
+        'forge_loader_version_range': forge_loader_version_range,
+        'fabric_version'            : fabric_version,
+        'fabric_loader_version'     : fabric_loader_version
+    ])
+}
+sourceSets.main.java.srcDir "${buildDir}/generated/java"
+compileJava.dependsOn 'generateJava'
+
+tasks.named('sourcesJar', Jar) {
+    from(sourceSets.main.allSource)
+    dependsOn(tasks.named('generateJava', Copy))
+}
+
 minecraft {
     version(minecraft_version)
     if(file("src/main/resources/${mod_id}.accesswidener").exists()){

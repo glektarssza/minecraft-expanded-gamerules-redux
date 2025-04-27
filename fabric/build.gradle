@@ -47,10 +47,11 @@ tasks.withType(Javadoc).configureEach {
 }
 tasks.named('sourcesJar', Jar) {
     from(project(':common').sourceSets.main.allSource)
+    dependsOn(project(':common').tasks.named('generateJava', Copy))
 }
 
 processResources {
-    from project(':common').sourceSets.main.resources
+    from(project(':common').sourceSets.main.resources)
 }
 
 publishing {

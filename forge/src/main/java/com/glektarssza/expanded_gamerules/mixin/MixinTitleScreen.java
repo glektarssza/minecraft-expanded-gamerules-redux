@@ -8,11 +8,21 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+/**
+ * A simple title screen mixin.
+ */
 @Mixin(TitleScreen.class)
 public class MixinTitleScreen {
+    /**
+     * Mix in to the initializer.
+     *
+     * @param ci The callback information.
+     */
     @Inject(at = @At("HEAD"), method = "init()V")
-    private void init(CallbackInfo info) {
-        Constants.LOG.info("This line is printed by an example mod mixin from Forge!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+    private void init(CallbackInfo ci) {
+        Constants.LOG
+            .info("This line is printed by an example mod mixin from Forge!");
+        Constants.LOG.info("MC Version: {}",
+            Minecraft.getInstance().getVersionType());
     }
 }
