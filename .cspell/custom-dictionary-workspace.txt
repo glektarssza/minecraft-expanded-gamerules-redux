@@ -12,7 +12,10 @@ minecraftforge
 mojang
 multicatch
 neoforge
-Pmod
+neoforged
+pmod
+refmap
+reobf
 spongepowered
 statment
 superinterfaces
