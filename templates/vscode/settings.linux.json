@@ -11,6 +11,10 @@
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
     },
+    "files.associations": {
+        "mcmod.info": "json",
+        "pack.mcmeta": "json"
+    },
     "java.autobuild.enabled": false,
     "java.jdt.ls.java.home": "/lib/jvm/temurin-21-jdk-amd64/",
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable",
@@ -47,9 +51,7 @@
     "java.saveActions.organizeImports": true,
     "java.silentNotification": true,
     "java.server.launchMode": "Standard",
-    "java.diagnostic.filter": [
-        "**/build/**"
-    ],
+    "java.diagnostic.filter": ["**/build/**"],
     "terminal.integrated.env.linux": {
         "JAVA_HOME": "/lib/jvm/temurin-21-jdk-amd64/"
     },
