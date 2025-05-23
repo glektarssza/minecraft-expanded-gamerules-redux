@@ -1,15 +1,17 @@
 {
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
     "version": "0.2",
+    "id": "project-root",
+    "name": "CSpell Spelling Checker Configuration",
+    "description": "CSpell spelling checker settings for the Minecraft Expanded Gamerules Redux project.",
+    "import": ["./.cspell/project.json"],
+    "loadDefaultConfiguration": true,
+    "dictionaries": ["project"],
+    "noSuggestDictionaries": [],
     "ignorePaths": [],
-    "dictionaryDefinitions": [
-        {
-            "name": "custom-dictionary",
-            "path": "./.cspell/custom-dictionary-workspace.txt",
-            "addWords": true
-        }
-    ],
-    "dictionaries": ["custom-dictionary"],
-    "words": [],
     "ignoreWords": [],
-    "import": []
+    "caseSensitive": false,
+    "useGitignore": true,
+    "failFast": false,
+    "gitignoreRoot": ["./"]
 }

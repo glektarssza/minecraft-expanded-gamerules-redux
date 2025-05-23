@@ -1,0 +1,19 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+    "version": "0.2",
+    "id": "project-dictionary",
+    "name": "CSpell Project Dictionary Definition",
+    "description": "Project-specific dictionary definition for the CSpell spelling checker.",
+    "dictionaryDefinitions": [
+        {
+            "name": "project",
+            "description": "Project-specific dictionary",
+            "ignoreForbiddenWords": true,
+            "noSuggest": false,
+            "repMap": [],
+            "supportNonStrictSearches": true,
+            "type": "C",
+            "path": "./dictionaries/project.txt"
+        }
+    ]
+}
